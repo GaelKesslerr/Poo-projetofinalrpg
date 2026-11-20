@@ -1,4 +1,7 @@
-class Personagem:
+from abc import ABC, abstractmethod
+
+
+class Personagem(ABC):
     def __init__(self, nome, nivel, vida, ataque, defesa):
         self.nome = nome
         self.nivel = nivel
@@ -6,16 +9,13 @@ class Personagem:
         self.ataque = ataque
         self.defesa = defesa
 
+    @abstractmethod
     def atacar(self, alvo):
-        dano = self.ataque - alvo.defesa
+        pass
 
-        if dano < 0:
-            dano = 0
-
-        return dano
-
+    @abstractmethod
     def habilidade_especial(self):
-        return "Este personagem não possui habilidade especial."
+        pass
 
     def __str__(self):
         return f"{self.nome} - Nível {self.nivel} - Vida: {self.vida}"
